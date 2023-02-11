@@ -1,13 +1,18 @@
----
 all:
   vars:
-    cloud_user: user
+    cloud_user: biny993
+    github_username: biny993
+    github_token: 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
+
     gitea_username: nephio
     gitea_password: nephio
+
+    dockerhub_username: biny993
+    dockerhub_token: dckr_pat_PAI-XlaYUJKiszbU7K8ShQVtGfg
     proxy:
-      http_proxy: 
-      https_proxy:
-      no_proxy:
+      http_proxy: http://147.11.252.42:9090
+      https_proxy: http://147.11.252.42:9090
+      no_proxy: 127.0.0.1,localhost
     host_os: "linux"  # use "darwin" for MacOS X, "windows" for Windows
     host_arch: "amd64"  # other possible values: "386","arm64","arm","ppc64le","s390x"
     tmp_directory: "/tmp"
@@ -29,7 +34,4 @@ all:
   children:
     vm:
       hosts:
-        localhost:
-          vars:
-            ansible_connection: local
-            ansible_python_interpreter: "{{ansible_playbook_python}}"
+        localhost

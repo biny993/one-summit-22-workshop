@@ -43,7 +43,7 @@ function _create_gh_secret {
 
 function _get_pkg {
     local pkg="$1"
-    local url=${2:-"https://github.com/nephio-project/nephio-packages.git/nephio-$pkg"}
+    local url=${2:-"https://github.com/biny993/nephio-packages.git/nephio-$pkg"}
     local path="$base_path/$pkg"
 
     if ! [ -d "$path" ]; then
@@ -61,7 +61,7 @@ function _install_configsync {
     cluster="$(hostname)-$(basename "$kubeconfig" ".config")"
 
     local path="$base_path/$cluster"
-    _get_pkg "$cluster" https://github.com/nephio-project/nephio-packages.git/nephio-configsync
+    _get_pkg "$cluster" https://github.com/biny993/nephio-packages.git/nephio-configsync
 
     kpt fn render "$path"
     kpt live init "$path" --force --kubeconfig "$kubeconfig"
@@ -88,7 +88,7 @@ kpt fn render "$webui_path"
 kpt live init "$webui_path" --force --kubeconfig ~/.kube/nephio.config
 kpt live apply "$webui_path" --reconcile-timeout=15m --kubeconfig ~/.kube/nephio.config
 
-_get_pkg "$participant" "https://github.com/nephio-project/one-summit-22-workshop.git/packages/participant"
+_get_pkg "$participant" "https://github.com/biny993/one-summit-22-workshop.git/packages/participant"
 kpt fn render "$participant_path"
 kpt live init "$participant_path" --force --kubeconfig ~/.kube/nephio.config
 kpt live apply "$participant_path" --reconcile-timeout=15m --kubeconfig ~/.kube/nephio.config
