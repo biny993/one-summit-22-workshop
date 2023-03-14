@@ -160,6 +160,8 @@ ansible-playbook playbooks/install-prereq.yaml
 
 ### provision proxy for docker.io
 
+in case install-prereq fails due to networking issue, adding proxy for docker and re-run the install-prereq again
+
 ```sh
 
 systemctl status docker
@@ -176,6 +178,9 @@ sudo cp ~/http-proxy.conf /etc/systemd/system/docker.service.d/http-proxy.conf
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
+
+ansible-playbook playbooks/install-prereq.yaml
+
 ```
 
 ### deploy cluster and nephio
