@@ -76,7 +76,7 @@ virtualbox -> preference -> networks -> nat natwork -> nephio1nat -> port forwar
     gitea 128.224.115.22 3000 10.0.10.4 3000
 
 ### user/pass
-    biny993/Li69nux*
+    biny993/<password>
 
 ### ssh to nephio vm:
 ssh -p 6022 biny993@128.224.115.22
@@ -86,10 +86,11 @@ ssh -p 6022 biny993@128.224.115.22
 ### enable password-less login and sudo without password to localhost
 
 ```sh
+sudo apt update
 sudo apt install net-tools
 ssh-keygen -t rsa -b 4096
 ssh-copy-id biny993@localhost
-nano /etc/sudoers
+sudo nano /etc/sudoers
     biny993 ALL=NOPASSWD: ALL
 
 ```
@@ -108,14 +109,14 @@ cat<<EOF>inventory/nephio.yaml
 all:
   vars:
     cloud_user: biny993
-    github_username: biny993
-    github_token: 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
+    github_username: <github username>
+    github_token: <github access token
 
     gitea_username: nephio
     gitea_password: nephio
 
-    dockerhub_username: biny993
-    dockerhub_token: dckr_pat_PAI-XlaYUJKiszbU7K8ShQVtGfg
+    dockerhub_username: <docker username>
+    dockerhub_token: <docker access token>
     proxy:
       http_proxy: http://147.11.252.42:9090
       https_proxy: http://147.11.252.42:9090
@@ -162,8 +163,8 @@ ansible-playbook playbooks/install-prereq.yaml
 ```sh
 
 systemctl status docker
-sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
-sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf
+sudo ls /etc/systemd/system/docker.service.d/http-proxy.conf
+
 sudo mkdir -p /etc/systemd/system/docker.service.d
 cat<<EOF>~/http-proxy.conf
 [Service]
