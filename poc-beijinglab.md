@@ -120,7 +120,7 @@ all:
     proxy:
       http_proxy: http://147.11.252.42:9090
       https_proxy: http://147.11.252.42:9090
-      no_proxy: 127.0.0.1,localhost
+      no_proxy: 10.*,127.0.0.1,localhost
     host_os: "linux"  # use "darwin" for MacOS X, "windows" for Windows
     host_arch: "amd64"  # other possible values: "386","arm64","arm","ppc64le","s390x"
     tmp_directory: "/tmp"
