@@ -183,11 +183,38 @@ ansible-playbook playbooks/install-prereq.yaml
 
 ```
 
-### deploy cluster and nephio
+### deploy local gitea repos
 
 ```sh
 ansible-playbook playbooks/create-gitea.yaml
 ansible-playbook playbooks/create-gitea-repos.yaml
+```
+
+### migrate free5gc and nephio-package
+
+migrate following github projects repos:
+
+```
+https://github.com/biny993/nephio-packages.git
+
+https://github.com/biny993/free5gc-packages.git
+
+```
+
+as local gitea repos:
+
+```
+http://gitea:3000/nephio/nephio-packages
+
+http://gitea:3000/nephio/free5gc-packages
+
+```
+
+
+
+### deploy cluster
+```sh
+
 ansible-playbook playbooks/deploy-clusters.yaml
 ansible-playbook playbooks/configure-nephio.yaml
 
