@@ -29,6 +29,9 @@
     env:
       GITEA_APP_INI: "/var/lib/gitea/custom/conf/app.ini"
       INSTALL_LOCK: "true"
+      http_proxy: "{{proxy.http_proxy}}"
+      https_proxy: "{{proxy.https_proxy}}"
+      no_proxy: "{{proxy.no_proxy}}"
     volumes:
       - /home/{{ cloud_user }}/gitea:/var/lib/gitea:rw
   when:

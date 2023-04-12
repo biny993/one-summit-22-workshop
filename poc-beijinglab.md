@@ -154,6 +154,8 @@ pip install pygithub
 ansible-galaxy collection install community.general
 
 ansible-galaxy collection install community.docker
+
+rm -rf /tmp/*
 ansible-playbook playbooks/install-prereq.yaml
 
 ```
@@ -231,7 +233,7 @@ nephio/nephio
 
 ## Deploy free5g-operator and FiveGCoreTopology
 
-Refer to https://github.com/biny993/one-summit-22-workshop/Readme.md
+Refer to https://github.com/biny993/one-summit-22-workshop#deploy-a-fivegcoretopology
 
 ## appendix
 
@@ -297,8 +299,22 @@ ansible-playbook playbooks/destroy-clusters.yaml
 ```sh
 sudo docker stop gitea
 sudo docker rm gitea
-rm -rf gitea/
+rm -rf ~/gitea/
 ```
+
+### Remove artifacts for re-running install-prereq.yaml
+
+/tmp/cni should be removed
+
+```sh
+rm -rf /tmp/cni
+```
+
+containerlab must be removed if you want to rerun
+
+~~~sh
+sudo rm /usr/bin/containerlab
+~~~
 
 ### check webui logs
 
